@@ -14,16 +14,22 @@ describe "User Sessions" do
   context "failure" do
     before do
       # try to sign in without a password
+      fill_in "Email", with: email
+      fill_in "Password", with: "lolwrong"
+      click_button "Sign in"
     end
 
     it "displays an error message" do
-      pending
+      expect(page).to have_content("Invalid email or password.")
     end
 
     it "shows the correct navigation links" do
       # should still see 'Sign in' and 'Sign up'
       # should not see 'Profile' or 'Sign out'
-      pending
+      expect(page).to have_link("Sign in")
+      expect(page).to have_link("Sign up")
+      expect(page).to_not have_link("Profile")
+      expect(page).to_not have_link("Sign out")
     end
   end
 
