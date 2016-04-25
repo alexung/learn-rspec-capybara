@@ -7,6 +7,7 @@ describe "User Sessions" do
 
   before do
     visit root_path
+    # can visit a certain class
     within('.navbar') { click_link('Sign in') }
   end
 
@@ -28,11 +29,13 @@ describe "User Sessions" do
 
   context "success" do
     before do
-      # sign in
+      fill_in "Email", with: email
+      fill_in "Password", with: password
+      click_button "Sign in"
     end
 
     it "displays a welcome message" do
-      pending
+      expect(page).to have_content("Signed in successfully.")
     end
 
     it "shows the correct navigation links" do
