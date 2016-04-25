@@ -41,7 +41,14 @@ describe "User Sessions" do
     it "shows the correct navigation links" do
       # should not see 'Sign in' and 'Sign up'
       # should see 'Profile' or 'Sign out'
-      pending
+      # to have_link is case sensitive!!
+      # css selectors like jquery with "within('.class/#id')"
+      within('.navbar') do
+        expect(page).to have_link("Profile")
+        expect(page).to have_link("Sign out")
+        expect(page).to_not have_link("Sign in")
+        expect(page).to_not have_link("Sign up")
+      end
     end
   end
 end
