@@ -8,6 +8,7 @@ gem 'high_voltage'
 gem 'devise', '~> 2.2.3'
 gem 'simple_form', '~> 2.1.0'
 
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
